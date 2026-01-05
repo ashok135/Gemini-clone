@@ -1,7 +1,16 @@
 #root {
- 
   margin: 0 auto;
   padding: 0px;
-   
 }
- 
+.gemini-text {
+  background: linear-gradient(
+    135deg,
+    #4285f4 0%,
+    #7b61ff 35%,
+    #c850c0 65%,
+    #ff6f61 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
