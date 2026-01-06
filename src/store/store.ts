@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import inputReducer from "../slice/inputSlice"
+import recentChatReducer from '../slice/RecentChatSlice'
 
 
 export const store = configureStore({
     reducer:{
-        inputValue: inputReducer
+        inputValue: inputReducer,
+        recentChats:recentChatReducer
 
     }
 })

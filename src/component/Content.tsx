@@ -1,12 +1,22 @@
 import React, { use } from "react";
 import { useSelector } from "react-redux";
 import type { RootState } from "../store/store";
+import { useMutation } from "@tanstack/react-query";
+import geminiAPI from "../api/geminiAPI";
+
 
 function Content() {
   const textdata = useSelector((state: RootState) => state.inputValue);
+   const chatData = useSelector((state:RootState)=>state.recentChats)
+   console.log(chatData)
+
+
+ 
+   
+   
   return (
-    <div className="pt-20  ">
-      {!textdata ? (
+    <div className="pt-20 overflow-y-auto h-[calc(100vh-120px)] ">
+      {chatData.length < 2  ? (
         <div>
           <h1 className="gemini-text text-[30px] md:text-[50px] font-semibold">
             Hello,Dev.
@@ -15,17 +25,22 @@ function Content() {
             how can i help you today ?
           </h2>
         </div>
-      ) : (
-        <div className="max-w-3xl mx-auto">
+      ) : 
+
+        chatData.map((data)=>{
+          return  <div className="max-w-3xl mx-auto">
           <h2 className="text-right">
             <span className="inline-block bg-gray-200 px-2 py-1 rounded-xl">
-              {textdata}
+
+             { data.qustion}
             </span>
           </h2>
 
-          <p>Answer</p>
+          <p> { data.answer}</p>
         </div>
-      )}
+        })
+       
+      }
     </div>
   );
 }
